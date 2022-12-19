@@ -1,0 +1,42 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* outline: none;
+  border: none; */
+}
+
+section{
+  max-height: 50vh;
+  /* height: 30vh; */
+  overflow-y: auto;
+  border-bottom: 2px solid #dddddd;  
+}
+
+.container{
+  width: 90%;
+  margin: 2rem auto;
+
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+th{
+  background-color: #dddddd;
+}
+
+.table-heading{
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+}
