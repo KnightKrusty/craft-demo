@@ -1,4 +1,4 @@
-const accountsEntity = {
+const accounts = {
     fields: [
         {
             fieldName: 'Account Id',
@@ -23,7 +23,7 @@ const accountsEntity = {
     ]
 }
 
-const transactionsEntity = {
+const transactions = {
     fields: [
         {
             fieldName: 'Transaction Id',
@@ -31,15 +31,16 @@ const transactionsEntity = {
             accessor: 'id'
         },
         {
-            fieldName: 'Linked to Account',
-            type: 'string',
-            accessor: 'accountId'
-        },
-        {
             fieldName: 'Name',
             type: 'string',
             accessor: 'name'
         },
+        {
+            fieldName: 'Account Id',
+            type: 'string',
+            accessor: 'accountId'
+        },
+      
         {
             fieldName: 'Transaction type',
             type: 'number',
@@ -49,11 +50,16 @@ const transactionsEntity = {
             fieldName: 'Transaction amount',
             type: 'number',
             accessor: 'amount'
+        },
+        {
+            fieldName: 'Tag',
+            type: 'string',
+            accessor: 'tag'
         }
     ]
 }
 
-const budgetsEntity = {
+const budgets = {
     fields: [
         {
             fieldName: 'budget id',
@@ -68,7 +74,7 @@ const budgetsEntity = {
     ]
 }
 
-const trendsEntity = {
+const trends = {
     fields: [
         {
             fieldName: 'Id',
@@ -81,12 +87,12 @@ const trendsEntity = {
             accessor: 'name'
         },
         {
-            fieldName: 'Account',
+            fieldName: 'Budget Id',
             type: 'string',
-            accessor: 'accountId'
+            accessor: 'budgetId'
         },
         {
-            fieldName: 'Transaction',
+            fieldName: 'Transaction Id',
             type: 'string',
             accessor: 'transId'
         }
@@ -94,7 +100,7 @@ const trendsEntity = {
 }
 
 
-const tagsEntity = {
+const tags = {
     fields: [
         {
             fieldName: 'Id',
@@ -110,4 +116,4 @@ const tagsEntity = {
 }
 
 
-export {accountsEntity, transactionsEntity, trendsEntity, budgetsEntity, tagsEntity};
+export default { accounts, transactions, trends, budgets, tags };

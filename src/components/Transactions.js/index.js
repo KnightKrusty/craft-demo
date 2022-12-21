@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { OptimiserContext } from '../../context';
 import Dropdown from '../common/Dropdown';
 import Table from '../common/Table';
-import { transactionsEntity } from '../../api/entityModel';
+import entityModel from '../../api/entityModel';
 
 
 const Transactions = () => {
@@ -18,7 +18,7 @@ const Transactions = () => {
                 <section id='transactions' className='container transactions-container'>
                     <Dropdown selectedValue={selectedTransaction.id} onChangeSelectedValue={onChangeSelectedValue} options={transactions} />
                     <div className='table-heading'>Selected Transactions</div>
-                    <Table theadData={transactionsEntity.fields} tbodyData={[selectedTransaction]} />
+                    <Table theadData={entityModel.transactions.fields} tbodyData={[selectedTransaction]} />
                 </section>
            }
         </>

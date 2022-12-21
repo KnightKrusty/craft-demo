@@ -1,4 +1,8 @@
 {
+  "dependencies": {
+    "transactions": ["accounts"],
+    "trends": ["transactions", "budgets"]
+  },
   "accounts": [
     {
       "id": "acc_1",
@@ -25,84 +29,96 @@
       "name": "Transaction 1",
       "accountId": "acc_1",
       "type": "plus",
-      "amount": "1500"
+      "amount": "1500",
+      "tag": "Tag 2"
     },
     {
       "id": "transaction_2",
       "name": "Transaction 2",
       "accountId": "acc_1",
       "type": "plus",
-      "amount": "500"
+      "amount": "500",
+      "tag": "Tag 3"
     },
     {
       "id": "transaction_3",
       "name": "Transaction 3",
       "accountId": "acc_1",
       "type": "plus",
-      "amount": "11500"
+      "amount": "11500",
+      "tag": "Tag 1"
     },
     {
       "id": "transaction_4",
       "name": "Transaction 4",
       "accountId": "acc_1",
       "type": "plus",
-      "amount": "500"
+      "amount": "500",
+      "tag": "Tag 2"
     },
     {
       "id": "transaction_5",
       "name": "Transaction 5",
       "accountId": "acc_2",
       "type": "plus",
-      "amount": "3500"
+      "amount": "3500",
+      "tag": "Tag 1"
     },
     {
       "id": "transaction_6",
       "name": "Transaction 6",
       "accountId": "acc_2",
       "type": "plus",
-      "amount": "33500"
+      "amount": "33500",
+      "tag": "Tag 1"
     },
     {
       "id": "transaction_7",
       "name": "Transaction 7",
       "accountId": "acc_2",
       "type": "minus",
-      "amount": "7500"
+      "amount": "7500",
+      "tag": "Tag 2"
     },
     {
       "id": "transaction_8",
       "name": "Transaction 8",
       "accountId": "acc_3",
       "type": "minus",
-      "amount": "2500"
+      "amount": "2500",
+      "tag": "Tag 1"
     },
     {
       "id": "transaction_9",
       "name": "Transaction 9",
       "accountId": "acc_3",
       "type": "plus",
-      "amount": "4500"
+      "amount": "4500",
+      "tag": "Tag 3"
     },
     {
       "id": "transaction_10",
       "name": "Transaction 10",
       "accountId": "acc_3",
       "type": "minus",
-      "amount": "11500"
+      "amount": "11500",
+      "tag": "Tag 1"
     },
     {
       "id": "transaction_11",
       "name": "Transaction 11",
       "accountId": "acc_3",
       "type": "minus",
-      "amount": "1500"
+      "amount": "1500",
+      "tag": "Tag 1"
     },
     {
       "id": "transaction_12",
       "name": "Transaction 12",
       "accountId": "acc_2",
       "type": "plus",
-      "amount": "9500"
+      "amount": "9500",
+      "tag": "Tag 1"
     }
   ],
   "budgets": [
@@ -209,42 +225,6 @@
     {
       "id": "tag_3",
       "name": "Tag 3"
-    },
-    {
-      "id": "tag_4",
-      "name": "Tag 4"
-    },
-    {
-      "id": "tag_5",
-      "name": "Tag 5"
-    },
-    {
-      "id": "tag_6",
-      "name": "Tag 6"
-    },
-    {
-      "id": "tag_7",
-      "name": "Tag 7"
-    },
-    {
-      "id": "tag_8",
-      "name": "Tag 8"
-    },
-    {
-      "id": "tag_8",
-      "name": "Tag 9"
-    },
-    {
-      "id": "tag_10",
-      "name": "Tag 10"
-    },
-    {
-      "id": "tag_11",
-      "name": "Tag 11"
-    },
-    {
-      "id": "tag_12",
-      "name": "Tag 12"
     }
   ]
 }

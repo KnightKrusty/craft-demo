@@ -1,9 +1,23 @@
 import React, { createContext, useEffect, useState } from "react";
 
-import { getData, getTransactions, getTrends} from "../api/apiConfig";
+import {  get, post, put, deleteRecord} from "../api/apiConfig";
 
 export const OptimiserContext = createContext(null);
 
+
+const fetchDependenciesList = () => {
+  
+}
+const calculateDependencies = () => {
+
+}
+let entities = ['accounts', 'transactions', 'trends', 'tags', 'budgets'];
+// dependency 
+let dependencyList = {
+  // transactions is dependant on accounts 
+  transactions: ['accounts', 'tags'],
+  trends: ['budgets', 'transactions']
+}
 const OptimiserProvider = ({ children }) => {
   const [accounts, setAccounts] = useState([]);
   const [transactions, setTransactions] = useState([]);
@@ -18,10 +32,10 @@ const OptimiserProvider = ({ children }) => {
   }, []);
 
   const fetchAccounts = () => {
-    getData('accounts')
-      .then((data) => {
-        // console.log(data)
-        return data;
+    get('accounts', {})
+      .then((res) => {
+        // console.log(res)
+        return res;
       })
       .then((accountsData) => {
         // console.log("Accounts Data => ", accountsData);
@@ -45,7 +59,7 @@ const OptimiserProvider = ({ children }) => {
   const fetchTransactions = (accountData) => {
     const { id: accountId = "" } = { ...accountData };
     return new Promise((resolve, reject) => {
-      getTransactions(accountId)
+      get('transactions', {accountId})
         .then((data) => {
           return data;
         })
@@ -67,7 +81,7 @@ const OptimiserProvider = ({ children }) => {
 
   const fetchBudgets = () => {
     return new Promise((resolve, reject) => {
-      getData('budgets')
+      get('budgets', {})
         .then((data) => {
           return data;
         })
@@ -88,7 +102,7 @@ const OptimiserProvider = ({ children }) => {
   };
 
   const fetchTrends = (transactionId, budgetId) => {
-    getTrends(budgetId, transactionId)
+    get('trends', {budgetId, transactionId})
       .then((data) => {
         return data;
       })
@@ -96,6 +110,7 @@ const OptimiserProvider = ({ children }) => {
         // console.log("Trends Data -> ", trendsData);
         setTrends(trendsData);
       })
+      // .then(()=> deleteRecord('tags', 'tag_4'))
       .catch((error) => {
         // console.error(
         //   "Error in getting trends Data -> ",
