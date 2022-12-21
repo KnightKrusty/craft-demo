@@ -1,0 +1,44 @@
+
+export const GET_DEPENDENCIES = 'GET_DEPENDENCIES';
+
+const accounts = {
+    CREATE: 'CREATE_ACCOUNT',
+    READ: 'READ_ACCOUNT',
+    UPDATE: 'UPDATE_ACCOUNT',
+    DELETE: 'DELETE_ACCOUNT',
+    SELECT_ENTITY: 'SELECT_ACCOUNT'
+}
+
+const transactions = {
+    CREATE: 'CREATE_TRANSACTION',
+    READ: 'READ_TRANSACTION',
+    UPDATE: 'UPDATE_TRANSACTION',
+    DELETE: 'DELETE_TRANSACTION',
+    SELECT_ENTITY: 'SELECT_TRANSACTION'
+}
+
+const budgets = {
+    CREATE: 'CREATE_BUDGET',
+    READ: 'READ_BUDGET',
+    UPDATE: 'UPDATE_BUDGET',
+    DELETE: 'DELETE_BUDGET',
+    SELECT_ENTITY: 'SELECT_BUDGET'
+}
+
+const trends = {
+    CREATE: 'CREATE_TREND',
+    READ: 'READ_TREND',
+    UPDATE: 'UPDATE_TREND',
+    DELETE: 'DELETE_TREND',
+    SELECT_ENTITY: 'SELECT_TREND'
+}
+
+const tags = {
+    CREATE: 'CREATE_TAG',
+    READ: 'READ_TAG',
+    UPDATE: 'UPDATE_TAG',
+    DELETE: 'DELETE_TAG',
+    SELECT_ENTITY:'SELECT_TAG'
+}
+
+export default { accounts, transactions, budgets, trends, tags};
