@@ -27,9 +27,9 @@ const OptimiserProvider = ({ children }) => {
   const [selectedTransaction, setSelectedTransaction] = useState({id: ''});
   const [selectedBudget, setSelectedBudget] = useState({id: ''});
 
-  useEffect(() => {
-        fetchAccounts();
-  }, []);
+  // useEffect(() => {
+  //       fetchAccounts();
+  // }, []);
 
   const fetchAccounts = () => {
     get('accounts', {})

@@ -1,12 +1,16 @@
 
 export const GET_DEPENDENCIES = 'GET_DEPENDENCIES';
+export const IS_LOADING_DEP = 'IS_LOADING_DEP';
+
+export const SELECT_ID = 'SELECT_ID';
 
 const accounts = {
     CREATE: 'CREATE_ACCOUNT',
     READ: 'READ_ACCOUNT',
     UPDATE: 'UPDATE_ACCOUNT',
     DELETE: 'DELETE_ACCOUNT',
-    SELECT_ENTITY: 'SELECT_ACCOUNT'
+    SELECT_ENTITY: 'SELECT_ACCOUNT',
+    IS_LOADING: 'IS_LOADING_ACCOUNT'
 }
 
 const transactions = {
@@ -14,7 +18,8 @@ const transactions = {
     READ: 'READ_TRANSACTION',
     UPDATE: 'UPDATE_TRANSACTION',
     DELETE: 'DELETE_TRANSACTION',
-    SELECT_ENTITY: 'SELECT_TRANSACTION'
+    SELECT_ENTITY: 'SELECT_TRANSACTION',
+    IS_LOADING: 'IS_LOADING_TRANSACTION'
 }
 
 const budgets = {
@@ -22,7 +27,8 @@ const budgets = {
     READ: 'READ_BUDGET',
     UPDATE: 'UPDATE_BUDGET',
     DELETE: 'DELETE_BUDGET',
-    SELECT_ENTITY: 'SELECT_BUDGET'
+    SELECT_ENTITY: 'SELECT_BUDGET',
+    IS_LOADING: 'IS_LOADING_BUDGET'
 }
 
 const trends = {
@@ -30,7 +36,8 @@ const trends = {
     READ: 'READ_TREND',
     UPDATE: 'UPDATE_TREND',
     DELETE: 'DELETE_TREND',
-    SELECT_ENTITY: 'SELECT_TREND'
+    SELECT_ENTITY: 'SELECT_TREND',
+    IS_LOADING: 'IS_LOADING_TREND'
 }
 
 const tags = {
@@ -38,7 +45,8 @@ const tags = {
     READ: 'READ_TAG',
     UPDATE: 'UPDATE_TAG',
     DELETE: 'DELETE_TAG',
-    SELECT_ENTITY:'SELECT_TAG'
+    SELECT_ENTITY: 'SELECT_TAG',
+    IS_LOADING: 'IS_LOADING_TAG'
 }
 
-export default { accounts, transactions, budgets, trends, tags};
+export default { accounts, transactions, budgets, trends, tags };

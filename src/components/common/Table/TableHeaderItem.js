@@ -2,9 +2,11 @@ import React from "react";
 
 const TableHeaderItem = ({ item }) => {
     return (
-        <th title={item.fieldName}>
-            {item.fieldName}
-        </th>
+        <>
+            <th title={item.fieldName}>
+                {item.fieldName}
+            </th>
+        </>
     );
 };
 

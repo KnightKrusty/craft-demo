@@ -2,7 +2,8 @@
 import actionTypes from '../actions/actionsTypes'
 const init = {
     selected: '',
-    tableData: []
+    tableData: [],
+    isLoading: false
 };
 
 const trendsReducer = (state = init, action) => {
@@ -12,7 +13,7 @@ const trendsReducer = (state = init, action) => {
                 ...state.tableData, action.record
             ]
         }
-        case actionTypes.trends.READ: return { ...state, tableData: action.records }
+        case actionTypes.trends.READ: return { ...state, tableData: action.records , isLoading: false}
         case actionTypes.trends.UPDATE: {
             let newState = state.tableData.filter(record => record.id !== action.payload.id);
             return { ...state, tableData: [...newState, { ...action.payload }] }
@@ -22,8 +23,11 @@ const trendsReducer = (state = init, action) => {
                 ...state.tableData.filter(record => record.id !== action.id)
             ]
         }
-        case actionTypes.trends.SELECT_TREND: return {
+        case actionTypes.trends.SELECT_ENTITY: return {
             ...state, selected: action.selected
+        }
+        case actionTypes.accounts.IS_LOADING: return {
+            ...state, isLoading: action.isLoading
         }
         default: return state;
     }

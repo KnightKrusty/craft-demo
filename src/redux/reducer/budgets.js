@@ -2,7 +2,8 @@
 import actionTypes from '../actions/actionsTypes'
 const init = {
     selected: '',
-    tableData: []
+    tableData: [],
+    isLoading: false
 };
 
 const budgetsReducer = (state = init, action) => {
@@ -10,7 +11,7 @@ const budgetsReducer = (state = init, action) => {
         case actionTypes.budgets.CREATE: return {...state, tableData:[
             ...state.tableData, action.record
         ]}
-        case actionTypes.budgets.READ: return {...state, tableData: action.records}
+        case actionTypes.budgets.READ: return {...state, tableData: action.records , isLoading: false}
         case actionTypes.budgets.UPDATE: {
             let newState = state.tableData.filter(record => record.id !== action.payload.id);
             return {...state, tableData: [...newState, { ...action.payload }]} 
@@ -20,8 +21,11 @@ const budgetsReducer = (state = init, action) => {
                 ...state.tableData.filter(record => record.id !== action.id)
             ]
         } 
-        case actionTypes.budgets.SELECT_BUDGET: return {
+        case actionTypes.budgets.SELECT_ENTITY: return {
             ...state, selected: action.selected
+        }
+        case actionTypes.accounts.IS_LOADING: return {
+            ...state, isLoading: action.isLoading
         }
         default: return state;
     }

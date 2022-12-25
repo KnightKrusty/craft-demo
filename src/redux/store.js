@@ -6,7 +6,8 @@ import trendsReducer from './reducer/trends';
 import tagsReducer from './reducer/tags';
 import dependencyReducer from './reducer/dependencies';
 import thunk from 'redux-thunk';
-import logger from 'redux-logger'
+import logger from 'redux-logger';
+
 export default configureStore({
     reducer: {
         accounts: accountsReducer,

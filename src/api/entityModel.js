@@ -3,22 +3,26 @@ const accounts = {
         {
             fieldName: 'Account Id',
             type: 'string',
-            accessor: 'id'
+            accessor: 'id',
+            dependencyField: false
         },
         {
             fieldName: 'Account Holder',
             type: 'string',
-            accessor: 'account_holder'
+            accessor: 'account_holder',
+            dependencyField: false
         },
         {
             fieldName: 'Balance',
             type: 'number',
-            accessor: 'balance'
+            accessor: 'balance',
+            dependencyField: false
         },
         {
             fieldName: 'Account Name',
             type: 'string',
-            accessor: 'name'
+            accessor: 'name',
+            dependencyField: false
         }
     ]
 }
@@ -28,33 +32,41 @@ const transactions = {
         {
             fieldName: 'Transaction Id',
             type: 'string',
-            accessor: 'id'
+            accessor: 'id',
+            dependencyField: false
         },
         {
             fieldName: 'Name',
             type: 'string',
-            accessor: 'name'
+            accessor: 'name',
+            dependencyField: false
         },
         {
             fieldName: 'Account Id',
             type: 'string',
-            accessor: 'accountId'
+            accessor: 'accountId',
+            dependencyField: true,
+            dependency: "accounts"
         },
       
         {
             fieldName: 'Transaction type',
             type: 'number',
-            accessor: 'type'
+            accessor: 'type',
+            dependencyField: false
         },
         {
             fieldName: 'Transaction amount',
             type: 'number',
-            accessor: 'amount'
+            accessor: 'amount',
+            dependencyField: false
         },
         {
-            fieldName: 'Tag',
+            fieldName: 'Tag Id',
             type: 'string',
-            accessor: 'tag'
+            accessor: 'tagId',
+            dependencyField: true,
+            dependency: "tags"
         }
     ]
 }
@@ -64,12 +76,14 @@ const budgets = {
         {
             fieldName: 'budget id',
             type: 'string',
-            accessor: 'id'
+            accessor: 'id',
+            dependencyField: false
         },
         {
             fieldName: 'Name',
             type: 'string',
-            accessor: 'name'
+            accessor: 'name',
+            dependencyField: false
         }
     ]
 }
@@ -79,22 +93,28 @@ const trends = {
         {
             fieldName: 'Id',
             type: 'string',
-            accessor: 'id'
+            accessor: 'id',
+            dependencyField: false
         },
         {
             fieldName: 'Name',
             type: 'string',
-            accessor: 'name'
+            accessor: 'name',
+            dependencyField: false
         },
         {
             fieldName: 'Budget Id',
             type: 'string',
-            accessor: 'budgetId'
+            accessor: 'budgetId',
+            dependencyField: true,
+            dependency: "budgets"
         },
         {
             fieldName: 'Transaction Id',
             type: 'string',
-            accessor: 'transId'
+            accessor: 'transId',
+            dependencyField: true,
+            dependency: "transactions"
         }
     ]
 }
@@ -105,12 +125,14 @@ const tags = {
         {
             fieldName: 'Id',
             type: 'string',
-            accessor: 'id'
+            accessor: 'id',
+            dependencyField: false
         },
         {
             fieldName: 'Name',
             type: 'string',
-            accessor: 'name'
+            accessor: 'name',
+            dependencyField: false
         }
     ]
 }
