@@ -32,18 +32,43 @@ th{
   background-color: #dddddd;
 }
 
-.table-heading{
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+.header button{
+  text-decoration: none;
+  cursor: pointer;
+}
+.header p{
   text-align: center;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 .field{
-  margin: 2rem;
+  margin: 2rem 0;
   display: flex;
   justify-content: space-between;
 }
 
 .actions{
   width: 10%;
+}
+
+input{
+  padding: .25rem .45rem;
+}
+.btn-container{
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+button{
+  padding: .25rem .45rem;
+}
+.form{
+  margin: 1rem;
+  padding: 1rem;
 }

@@ -1,7 +1,12 @@
 {
   "dependencies": {
-    "transactions": ["accounts"],
-    "trends": ["transactions", "budgets"]
+    "transactions": [
+      "accounts"
+    ],
+    "trends": [
+      "transactions",
+      "budgets"
+    ]
   },
   "accounts": [
     {
@@ -62,7 +67,7 @@
       "accountId": "acc_2",
       "type": "plus",
       "amount": "3500",
-      "tag": "Tag 1"
+      "tagId": "tag_1"
     },
     {
       "id": "transaction_6",
@@ -70,7 +75,7 @@
       "accountId": "acc_2",
       "type": "plus",
       "amount": "33500",
-      "tag": "Tag 1"
+      "tagId": "tag_1"
     },
     {
       "id": "transaction_7",
@@ -78,7 +83,7 @@
       "accountId": "acc_2",
       "type": "minus",
       "amount": "7500",
-      "tag": "Tag 2"
+      "tagId": "tag_2"
     },
     {
       "id": "transaction_8",
@@ -86,7 +91,7 @@
       "accountId": "acc_3",
       "type": "minus",
       "amount": "2500",
-      "tag": "Tag 1"
+      "tagId": "tag_1"
     },
     {
       "id": "transaction_9",
@@ -94,7 +99,7 @@
       "accountId": "acc_3",
       "type": "plus",
       "amount": "4500",
-      "tag": "Tag 3"
+      "tagId": "tag_3"
     },
     {
       "id": "transaction_10",
@@ -102,7 +107,7 @@
       "accountId": "acc_3",
       "type": "minus",
       "amount": "11500",
-      "tag": "Tag 1"
+      "tagId": "tag_1"
     },
     {
       "id": "transaction_11",
@@ -110,7 +115,7 @@
       "accountId": "acc_3",
       "type": "minus",
       "amount": "1500",
-      "tag": "Tag 1"
+      "tagId": "tag_1"
     },
     {
       "id": "transaction_12",
@@ -118,7 +123,7 @@
       "accountId": "acc_2",
       "type": "plus",
       "amount": "9500",
-      "tag": "Tag 1"
+      "tagId": "tag_1"
     }
   ],
   "budgets": [

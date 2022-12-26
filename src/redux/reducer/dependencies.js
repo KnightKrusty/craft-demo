@@ -7,6 +7,9 @@ let init = {
     selectedIds: {
         accounts: "", transactions: "", trends: "", tags: "", budgets: "" 
     },
+    fields: {
+        accounts: "accountId", transactions: "transactionId", trends: "trendId", tags: "tagId", budgets: "budgetId" 
+    },
     LL: {
         accounts: ["transactions", "trends"],
         transactions: ["trends"],

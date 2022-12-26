@@ -14,7 +14,7 @@ const AddEntity = () => {
                 &&
                 <>
                     <div>
-                        AddEntity {type}
+                        Add Entity: {type}
                     </div>
                     <Create
                         type={type}
