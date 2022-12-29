@@ -6,7 +6,7 @@ import trendsReducer from './reducer/trends';
 import tagsReducer from './reducer/tags';
 import dependencyReducer from './reducer/dependencies';
 import thunk from 'redux-thunk';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 
 export default configureStore({
     reducer: {
@@ -17,5 +17,5 @@ export default configureStore({
         tags: tagsReducer,
         dependency: dependencyReducer
     },
-    middleware: [thunk, logger],
+    middleware: [thunk],
 })

@@ -24,7 +24,7 @@ const tagsReducer = (state = init, action) => {
         case actionTypes.tags.SELECT_ENTITY: return {
             ...state, selected: action.selected
         }
-        case actionTypes.accounts.IS_LOADING: return {
+        case actionTypes.tags.IS_LOADING: return {
             ...state, isLoading: action.isLoading
         }
         default: return state;

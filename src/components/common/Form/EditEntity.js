@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import entityModel from '../../../api/entityModel';
 import Create from './CreateEntity';
+import { useParams } from 'react-router';
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { saveFormData } from '../../../redux/actions/actions';
+import { editFormData } from '../../../redux/actions/actions';
 
 const EditEntity = () => {
   const { type, id } = useParams();
@@ -14,6 +14,7 @@ const EditEntity = () => {
   const [selected, setSelectedData] = useState({});
 
   useEffect(() => {
+    // get the record of the 'type' for the 'id' coming from params
     let filetred = tableData.filter(ele => ele.id === id);
     setSelectedData(filetred[0] || {})
   }, [tableData])
@@ -21,12 +22,10 @@ const EditEntity = () => {
   const saveForm = (formState) => {
     let query = {};
     let queryFields = entityModel[type].fields.filter(field=> field.dependencyField)
-    // .map(field=> field.accessor);
     queryFields.forEach(field=> {
       query[field.accessor] = formState[field.accessor];
     })
-
-    dispatch(saveFormData(type, id, formState , query));
+    dispatch(editFormData(type, id, formState, query));
   }
   return (
     <div className='form'>
@@ -36,7 +35,6 @@ const EditEntity = () => {
       {
         Object.keys(selected).length
         &&
-        <>
           <Create
             type={type}
             dependency={dependency}
@@ -45,7 +43,6 @@ const EditEntity = () => {
             disableId={true}
             saveFormAction={saveForm}
           />
-        </>
       }
 
     </div>

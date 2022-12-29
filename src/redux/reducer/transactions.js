@@ -24,7 +24,7 @@ const transactionsReducer = (state = init, action) => {
         case actionTypes.transactions.SELECT_ENTITY: return {
             ...state, selected: action.selected
         }
-        case actionTypes.accounts.IS_LOADING: return {
+        case actionTypes.transactions.IS_LOADING: return {
             ...state, isLoading: action.isLoading
         }
         default: return state;

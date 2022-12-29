@@ -107,7 +107,7 @@ const callGetApis = (order, data, selectedIds, dispatch) => {
         promise = promise.then(() => {
             return new Promise((resolve, reject) => {
                 let dependants = getDependants(data, key, selectedIds);
-
+                
                 dispatch({ type: actionsTypes[key].IS_LOADING, isLoading: true })
                 get(key, dependants).then(data => {
                     selectedIds[key] = data[0]?.id || '';
@@ -151,7 +151,7 @@ const changeSelection = (order, data, selectedIds) => {
     }
 }
 
-const saveFormData = (type, id, data) => {
+const editFormData = (type, id, data) => {
     return (dispatch, getState) => {
         console.log(getState().dependency.dependencies);
         put(type, id, data).then(res => {
@@ -160,13 +160,19 @@ const saveFormData = (type, id, data) => {
     }
 }
 
+const addNewData = (type, data) => {
+    return (dispatch, getState) => {
+        console.log(getState().dependency.dependencies);
+        post(type, data).then(res => {
+            refreshData(dispatch, type, getState);
+        })
+    }
+}
 const getQueryObj = (fields, selectedIds, dependencies) => {
     let obj = {};
-    console.clear()
-    console.log(dependencies)
     dependencies.forEach(dep => {
         let [key, val] = [fields[dep], selectedIds[dep]];
-        obj[key] = val
+        obj[key] = val;
     })
     return obj;
 }
@@ -202,6 +208,6 @@ function getDependants(data, key, selectedIds) {
     }
     return dependants;
 }
-export { getDependencies, changeSelection, saveFormData, deleteData };
+export { getDependencies, changeSelection, editFormData, deleteData , addNewData};
 
 
