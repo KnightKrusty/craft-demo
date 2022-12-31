@@ -10,13 +10,6 @@ let init = {
     fields: {
         accounts: "accountId", transactions: "transactionId", trends: "trendId", tags: "tagId", budgets: "budgetId" 
     },
-    LL: {
-        accounts: ["transactions", "trends"],
-        transactions: ["trends"],
-        budgets: ["trends"],
-        tags: [],
-        trends: []
-    },
     isLoading: false
 };
 
@@ -34,7 +27,7 @@ const dependencyReducer = (state = init, action) => {
         case SELECT_ID : return {
             ...state, selectedIds: {...state.selectedIds, [action.key]: action.selectedId}
         }
-        default: return { ...state }
+        default: return state;
     }
 }
 

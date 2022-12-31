@@ -1,0 +1,24 @@
+.btn-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.field {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form {
+    margin: 1rem;
+    padding: 1rem;
+}
+
+input {
+    padding: .25rem .45rem;
+}
+
+button {
+    padding: .25rem .45rem;
+}

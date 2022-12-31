@@ -4,6 +4,9 @@ export const IS_LOADING_DEP = 'IS_LOADING_DEP';
 
 export const SELECT_ID = 'SELECT_ID';
 
+export const ADD_TOAST = "ADD_TOAST";
+export const REMOVE_TOAST = "REMOVE_TOAST";
+
 const accounts = {
     CREATE: 'CREATE_ACCOUNT',
     READ: 'READ_ACCOUNT',

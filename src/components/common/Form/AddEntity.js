@@ -5,6 +5,7 @@ import Create from './CreateEntity';
 import entityModel from '../../../api/entityModel';
 import { addNewData } from '../../../redux/actions/actions';
 import { useDispatch } from 'react-redux';
+import './form.css';
 
 const AddEntity = () => {
     const { type } = useParams();
@@ -24,7 +25,7 @@ const AddEntity = () => {
                 type
                 &&
                 <div className='form'>
-                    <h1 className='heading'>
+                    <h1>
                         Add Entity: {type}
                     </h1>
                     <Create

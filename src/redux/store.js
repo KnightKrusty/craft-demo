@@ -6,6 +6,7 @@ import trendsReducer from './reducer/trends';
 import tagsReducer from './reducer/tags';
 import dependencyReducer from './reducer/dependencies';
 import thunk from 'redux-thunk';
+import toastsReducer from './reducer/toast';
 // import logger from 'redux-logger';
 
 export default configureStore({
@@ -15,7 +16,8 @@ export default configureStore({
         budgets: budgetsReducer,
         trends: trendsReducer,
         tags: tagsReducer,
-        dependency: dependencyReducer
+        dependency: dependencyReducer,
+        toasts: toastsReducer
     },
     middleware: [thunk],
 })

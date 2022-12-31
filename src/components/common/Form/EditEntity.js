@@ -5,6 +5,8 @@ import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { editFormData } from '../../../redux/actions/actions';
+import './form.css';
+
 
 const EditEntity = () => {
   const { type, id } = useParams();
@@ -29,7 +31,7 @@ const EditEntity = () => {
   }
   return (
     <div className='form'>
-      <h1 className='heading'>
+      <h1>
         Edit Entity: {type}
       </h1>
       {

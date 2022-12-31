@@ -46,7 +46,6 @@
   },
   "devDependencies": {
     "json-loader": "^0.5.7",
-    "json-server": "^0.17.1",
-    "react-icons": "^4.7.1"
+    "json-server": "^0.17.1"
   }
 }

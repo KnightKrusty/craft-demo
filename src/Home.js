@@ -1,21 +1,20 @@
 import Entity from './components/Entity';
 import { useSelector } from 'react-redux';
+import Loader from './components/common/Loader';
+import Toast from './components/common/Toast';
 
 
 function Home() {
-  const { dependencies, isLoading } = useSelector(state => state.dependency)
+  const { isLoading, topo } = useSelector(state => state.dependency);
 
   return (
     <div className="Home">
-      {dependencies && !isLoading && <>
-        <Entity type='accounts' />
-        <Entity type='transactions' />
-        <Entity type='budgets' />
-        <Entity type='trends' />
-        <Entity type='tags' />
+      {isLoading && <Loader/>}
+      {topo && !isLoading && <>
+        {topo.map((entity) => <Entity type={entity} key={entity} />)}
       </>
       }
-
+      {/* <Toast /> */}
     </div>
   );
 }

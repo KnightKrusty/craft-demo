@@ -1,4 +1,4 @@
-import { GET_DEPENDENCIES, IS_LOADING_DEP, SELECT_ID } from './actionsTypes';
+import { GET_DEPENDENCIES, IS_LOADING_DEP, SELECT_ID, ADD_TOAST, REMOVE_TOAST } from './actionsTypes';
 import { get, post, put, deleteRecord } from "../../api/apiConfig";
 import actionsTypes from './actionsTypes';
 
@@ -59,7 +59,6 @@ const getTopoSortBFS = (data) => {
 }
 const getTopoSortDFS = (data) => {
     let topo = [];
-
     let keys = ["accounts", "transactions", "budgets", "trends", "tags"];
     let adj = {};
     for (let key of keys) {
@@ -78,9 +77,7 @@ const getTopoSortDFS = (data) => {
     while (stack.length) {
         topo.push(stack.pop());
     }
-    console.log(topo)
     return { adj, topo };
-
 }
 function findTopoSOrt(node, vis, st, adj) {
     vis[node] = 1;
@@ -107,7 +104,7 @@ const callGetApis = (order, data, selectedIds, dispatch) => {
         promise = promise.then(() => {
             return new Promise((resolve, reject) => {
                 let dependants = getDependants(data, key, selectedIds);
-                
+
                 dispatch({ type: actionsTypes[key].IS_LOADING, isLoading: true })
                 get(key, dependants).then(data => {
                     selectedIds[key] = data[0]?.id || '';
@@ -120,7 +117,6 @@ const callGetApis = (order, data, selectedIds, dispatch) => {
                     resolve();
                 }).catch(e => {
                     dispatch({ type: actionsTypes[key].IS_LOADING, isLoading: false })
-                    console.log(e)
                     reject(e);
                 })
             })
@@ -129,7 +125,6 @@ const callGetApis = (order, data, selectedIds, dispatch) => {
     promise.finally(() => {
         dispatch(({ type: IS_LOADING_DEP, isLoading: false }))
     })
-    // return promise
 }
 
 const getDependencies = () => dispatch => {
@@ -140,8 +135,8 @@ const getDependencies = () => dispatch => {
         callGetApis(topo, data, selectedIds, dispatch);
     })
         .catch(e => {
-            dispatch(({ type: IS_LOADING_DEP, isLoading: false }))
             console.log(e)
+            dispatch(({ type: IS_LOADING_DEP, isLoading: false }))
         })
 }
 
@@ -153,21 +148,25 @@ const changeSelection = (order, data, selectedIds) => {
 
 const editFormData = (type, id, data) => {
     return (dispatch, getState) => {
-        console.log(getState().dependency.dependencies);
         put(type, id, data).then(res => {
             refreshData(dispatch, type, getState);
+        }).catch(e => {
+            console.log(e)
         })
     }
 }
 
 const addNewData = (type, data) => {
     return (dispatch, getState) => {
-        console.log(getState().dependency.dependencies);
         post(type, data).then(res => {
             refreshData(dispatch, type, getState);
+        }).catch(e => {
+            console.log(e)
+            dispatch(addToast(type, `Failed adding ${type}`))
         })
     }
 }
+
 const getQueryObj = (fields, selectedIds, dependencies) => {
     let obj = {};
     dependencies.forEach(dep => {
@@ -177,12 +176,13 @@ const getQueryObj = (fields, selectedIds, dependencies) => {
     return obj;
 }
 const deleteData = (type, id) => {
-    return (dispatch , getState)=> {
+    return (dispatch, getState) => {
         deleteRecord(type, id).then(data => {
             refreshData(dispatch, type, getState);
         })
     }
 }
+
 function refreshData(dispatch, type, getState) {
     dispatch({ type: actionsTypes[type].IS_LOADING, isLoading: true });
     let { fields, selectedIds, dependencies } = getState().dependency;
@@ -195,7 +195,6 @@ function refreshData(dispatch, type, getState) {
     }).catch(e => {
         dispatch({ type: actionsTypes[type].IS_LOADING, isLoading: false });
     });
-    console.log('DONE');
 }
 
 function getDependants(data, key, selectedIds) {
@@ -208,6 +207,34 @@ function getDependants(data, key, selectedIds) {
     }
     return dependants;
 }
-export { getDependencies, changeSelection, editFormData, deleteData , addNewData};
+
+
+// Toasts
+
+const createToast = (type, description) => {
+    return {
+        id: Math.floor((Math.random() * 101) + 1),
+        title: type === 'success' ? 'Success' : 'Failed',
+        description,
+        backgroundColor: type === 'success' ? '#5db74e' : '#d82938b0',
+        type
+    }
+}
+const addToast = (type, description) => {
+    return {
+        type: ADD_TOAST,
+        toast: createToast(type, description)
+    };
+}
+
+const removeToast = (id) => {
+    return {
+        type: REMOVE_TOAST,
+        id: id
+    };
+}
+
+
+export { getDependencies, changeSelection, editFormData, deleteData, addNewData, addToast, removeToast };
 
 
