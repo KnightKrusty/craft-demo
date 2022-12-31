@@ -4,7 +4,6 @@ const getBaseUrl = type => `http://localhost:3030/${type}`;
 
 const get = async (type, dependencyList) => {
     let url = getBaseUrl(type);
-
     if (Object.keys(dependencyList).length > 0) {
         url += '?';
         let list = []
@@ -14,14 +13,13 @@ const get = async (type, dependencyList) => {
         url += list.join('&');
     }
     console.log(url);
-
     const res = await axios.get(url);
     return res.data;
 }
 
 const post = async (type, record) => {
     let url = getBaseUrl(type);
-    const res = axios.post(url, record);
+    const res = await axios.post(url, record);
     return res.data
 }
 

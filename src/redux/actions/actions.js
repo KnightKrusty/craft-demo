@@ -13,14 +13,6 @@ import actionsTypes from './actionsTypes';
 // adj
 // accounts: ['transactions'], budgets: ['trends'], tags: [], transactions: ['trends'], trends: []
 
-// Linked list 
-// Acc -> trans -> trends
-// trans -> trends 
-// budgets -> trends
-// trends -> null
-// tags -> null
-
-
 const getTopoSortBFS = (data) => {
     let topo = [];
     let indegree = new Map();
@@ -98,42 +90,65 @@ let keys = {
 let selectedIds = {
     accounts: "", transactions: "", trends: "", tags: "", budgets: ""
 };
-const callGetApis = (order, data, selectedIds, dispatch) => {
-    let promise = Promise.resolve();
-    for (let key of order) {
-        promise = promise.then(() => {
-            return new Promise((resolve, reject) => {
-                let dependants = getDependants(data, key, selectedIds);
+// const callGetApis = (order, data, selectedIds, dispatch) => {
+//     let promise = Promise.resolve();
+//     for (let key of order) {
+//         promise = promise.then(() => {
+//             return new Promise((resolve, reject) => {
+//                 let dependants = getDependants(data, key, selectedIds);
 
-                dispatch({ type: actionsTypes[key].IS_LOADING, isLoading: true })
-                get(key, dependants).then(data => {
-                    selectedIds[key] = data[0]?.id || '';
-                    dispatch({ type: actionsTypes[key].READ, records: data });
-                    return data;
-                }).then(data => {
-                    dispatch({ type: actionsTypes[key].SELECT_ENTITY, selected: data[0] || {} });
-                    dispatch({ type: SELECT_ID, key: key, selectedId: data[0]?.id || '' })
-                    dispatch({ type: actionsTypes[key].IS_LOADING, isLoading: false })
-                    resolve();
-                }).catch(e => {
-                    dispatch({ type: actionsTypes[key].IS_LOADING, isLoading: false })
-                    reject(e);
-                })
+//                 dispatch({ type: actionsTypes[key].IS_LOADING, isLoading: true })
+//                 get(key, dependants).then(data => {
+//                     selectedIds[key] = data[0]?.id || '';
+//                     dispatch({ type: actionsTypes[key].READ, records: data });
+//                     return data;
+//                 }).then(data => {
+//                     dispatch({ type: actionsTypes[key].SELECT_ENTITY, selected: data[0] || {} });
+//                     dispatch({ type: SELECT_ID, key: key, selectedId: data[0]?.id || '' })
+//                     dispatch({ type: actionsTypes[key].IS_LOADING, isLoading: false })
+//                     resolve();
+//                 }).catch(e => {
+//                     dispatch({ type: actionsTypes[key].IS_LOADING, isLoading: false })
+//                     reject(e);
+//                 })
+//             })
+//         })
+//     }
+//     promise.finally(() => {
+//         dispatch(({ type: IS_LOADING_DEP, isLoading: false }))
+//     })
+// }
+
+const callGetApis = async (order, data, selectedIds, dispatch) => {
+    for await (let key of order) {
+        try {
+            let dependants = getDependants(data, key, selectedIds);
+            dispatch({ type: actionsTypes[key].IS_LOADING, isLoading: true })
+            const newData = await get(key, dependants).then(data => {
+                selectedIds[key] = data[0]?.id || '';
+                dispatch({ type: actionsTypes[key].READ, records: data });
+                return data;
             })
-        })
+            dispatch({ type: actionsTypes[key].SELECT_ENTITY, selected: newData[0] || {} });
+            dispatch({ type: SELECT_ID, key: key, selectedId: newData[0]?.id || '' })
+            dispatch({ type: actionsTypes[key].IS_LOADING, isLoading: false })
+        } catch (error) {
+            console.log(error)
+            dispatch({ type: actionsTypes[key].IS_LOADING, isLoading: false })
+        }
     }
-    promise.finally(() => {
-        dispatch(({ type: IS_LOADING_DEP, isLoading: false }))
-    })
+    dispatch(({ type: IS_LOADING_DEP, isLoading: false }))
+
 }
 
 const getDependencies = () => dispatch => {
     dispatch(({ type: IS_LOADING_DEP, isLoading: true }))
-    get('dependencies', {}).then(data => {
-        let { adj, topo } = getTopoSortDFS(data)
-        dispatch({ type: GET_DEPENDENCIES, dependencies: data, adjacency: adj, topo: topo });
-        callGetApis(topo, data, selectedIds, dispatch);
-    })
+    get('dependencies', {})
+        .then(data => {
+            let { adj, topo } = getTopoSortDFS(data)
+            dispatch({ type: GET_DEPENDENCIES, dependencies: data, adjacency: adj, topo: topo });
+            callGetApis(topo, data, selectedIds, dispatch);
+        })
         .catch(e => {
             console.log(e)
             dispatch(({ type: IS_LOADING_DEP, isLoading: false }))
@@ -175,6 +190,7 @@ const getQueryObj = (fields, selectedIds, dependencies) => {
     })
     return obj;
 }
+
 const deleteData = (type, id) => {
     return (dispatch, getState) => {
         deleteRecord(type, id).then(data => {
@@ -234,7 +250,14 @@ const removeToast = (id) => {
     };
 }
 
-
-export { getDependencies, changeSelection, editFormData, deleteData, addNewData, addToast, removeToast };
+export {
+    getDependencies,
+    changeSelection,
+    editFormData,
+    deleteData,
+    addNewData,
+    addToast,
+    removeToast
+};
 
 
