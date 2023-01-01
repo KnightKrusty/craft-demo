@@ -45,11 +45,11 @@ const Entity = ({ type }) => {
   }, [id]);
 
   return (
-    <>
+    <section id={type} className="container">
       {isLoading ? (
         <div>Loading.....</div>
       ) : (
-        <section id={type} className="container">
+        <>
           {tableData.length ? (
             <Dropdown
               selectedValue={selected.id}
@@ -68,9 +68,9 @@ const Entity = ({ type }) => {
             tbodyData={tableData.length ? [selected] : []}
             type={type}
           />
-        </section>
+        </>
       )}
-    </>
+    </section>
   );
 };
 
