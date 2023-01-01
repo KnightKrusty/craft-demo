@@ -1,0 +1,28 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 2rem 0;
+    color: #68788d;
+    border-radius: 5px;
+}
+
+td,
+th {
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #dddddd4a;
+}
+.actions{
+    width: 10%;
+  }
+  
+tr td:last-child{
+    border-left: 1px solid #dddddd4a;
+}  
+td{
+    border: 1px solid #dddddd4a
+}

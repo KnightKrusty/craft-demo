@@ -76,7 +76,3 @@ DELETE - /{type}/{id}
 
 ![image](https://user-images.githubusercontent.com/55315778/210150617-b7062ff6-c1a1-41ce-b746-27725c581fff.png)
 
-
-
-
-
