@@ -26,3 +26,6 @@ tr td:last-child{
 td{
     border: 1px solid #dddddd4a
 }
+.icon{
+    cursor: pointer;
+}

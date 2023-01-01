@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "transactions": ["accounts"],
+    "accounts": ["transactions"]
+  }
+}

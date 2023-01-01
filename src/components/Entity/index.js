@@ -5,7 +5,7 @@ import entityModel from "../../api/entityModel";
 import { useSelector, useDispatch } from "react-redux";
 import actionTypes from "../../redux/actions/actionsTypes";
 import { SELECT_ID } from "../../redux/actions/actionsTypes";
-import { changeSelection, addToast } from "../../redux/actions/actions";
+import { changeSelection } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 import "./entity.css";
 
@@ -33,9 +33,6 @@ const Entity = ({ type }) => {
     if (id !== undefined && !isFirstRender.current) {
       console.info(`${type} id changed`, id);
       console.log(type, id);
-      dispatch(
-        addToast("success", id ? `${type} changed to ${id}` : `${type} changed`)
-      );
       if (adjacency[type] && adjacency[type].length && !isLoadingDep)
         dispatch(changeSelection(adjacency[type], dependencies, selectedIds));
     }
@@ -45,11 +42,11 @@ const Entity = ({ type }) => {
   }, [id]);
 
   return (
-    <>
+    <section id={type} className="container">
       {isLoading ? (
         <div>Loading.....</div>
       ) : (
-        <section id={type} className="container">
+        <>
           {tableData.length ? (
             <Dropdown
               selectedValue={selected.id}
@@ -68,9 +65,9 @@ const Entity = ({ type }) => {
             tbodyData={tableData.length ? [selected] : []}
             type={type}
           />
-        </section>
+        </>
       )}
-    </>
+    </section>
   );
 };
 

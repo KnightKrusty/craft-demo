@@ -1,12 +1,7 @@
 {
   "dependencies": {
-    "transactions": [
-      "accounts"
-    ],
-    "trends": [
-      "transactions",
-      "budgets"
-    ]
+    "transactions": ["accounts"],
+    "trends": ["transactions", "budgets"]
   },
   "accounts": [
     {
@@ -255,6 +250,10 @@
     {
       "id": "tag_3",
       "name": "Tag 3"
+    },
+    {
+      "id": "tag_4",
+      "name": "Tag 4"
     }
   ]
 }

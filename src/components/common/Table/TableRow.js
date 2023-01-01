@@ -9,8 +9,8 @@ const TableRow = ({ data, editAction, deleteAction }) => {
             {Object.keys(data).map((key) => {
                 return <td key={key}>{data[key]}</td>;
             })}
-            <td onClick={() => editAction(data.id)}><EditIcon /></td>
-            <td onClick={() => deleteAction(data.id)}><DeleteIcon /></td>
+            <td className="icon" onClick={() => editAction(data.id)}><EditIcon /></td>
+            <td className="icon" onClick={() => deleteAction(data.id)}><DeleteIcon /></td>
         </tr>
     );
 };

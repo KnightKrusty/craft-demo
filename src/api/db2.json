@@ -1,0 +1,94 @@
+{
+  "dependencies": {
+    "transactions": [
+      "accounts",
+      "tags"
+    ],
+    "trends": [
+      "transactions",
+      "budgets"
+    ]
+  },
+  "accounts": [
+    {
+      "id": "acc_1",
+      "name": "Account 1",
+      "account_holder": "Holder 1",
+      "balance": "30000"
+    },
+    {
+      "id": "acc_2",
+      "account_holder": "Holder 2",
+      "balance": "1231",
+      "name": "Account 2"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "transaction_1",
+      "name": "Transaction 1",
+      "accountId": "acc_1",
+      "type": "plus",
+      "amount": "1500",
+      "tagId": "tag_1"
+    },
+    {
+      "id": "transaction_2",
+      "name": "Transaction 2",
+      "accountId": "acc_2",
+      "type": "plus",
+      "amount": "1500",
+      "tagId": "tag_2"
+    },
+    {
+      "id": "transaction_3",
+      "name": "Transaction 3",
+      "accountId": "acc_1",
+      "type": "plus",
+      "amount": "1500",
+      "tagId": "tag_2"
+    },
+    {
+      "id": "transaction_4",
+      "name": "Transaction 4",
+      "accountId": "acc_2",
+      "type": "plus",
+      "amount": "1500",
+      "tagId": "tag_1"
+    }
+  ],
+  "budgets": [
+    {
+      "id": "budget_1",
+      "name": "Budget 1"
+    },
+    {
+      "id": "budget_2",
+      "name": "Budget 2"
+    }
+  ],
+  "trends": [
+    {
+      "id": "trends_1",
+      "name": "Trends 1",
+      "budgetId": "budget_1",
+      "transactionId": "transaction_1"
+    },
+    {
+      "id": "trends_2",
+      "name": "Trends 2",
+      "budgetId": "budget_2",
+      "transactionId": "transaction_2"
+    }
+  ],
+  "tags": [
+    {
+      "id": "tag_1",
+      "name": "Tag 1"
+    },
+    {
+      "id": "tag_2",
+      "name": "Tag2"
+    }
+  ]
+}
