@@ -10,7 +10,8 @@ const Dropdown = ({ label, selectedValue, onChangeSelectedValue, type }) => {
     }
     return (
         <div className='field'>
-            {label && <label htmlFor={`dropdown_${type}`}>{label}</label>}
+            <label htmlFor={`dropdown_${type}`}>
+              <span>{label}</span>
             <select
                 id={`dropdown_${type}`}
                 value={selectedId}
@@ -24,6 +25,7 @@ const Dropdown = ({ label, selectedValue, onChangeSelectedValue, type }) => {
                     );
                 })}
             </select>
+            </label>
         </div>
     )
 }

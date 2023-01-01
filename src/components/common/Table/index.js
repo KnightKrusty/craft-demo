@@ -8,8 +8,6 @@ import './table.css';
 
 
 const Table = ({ theadData, tbodyData, customClass, type }) => {
-    console.log(type);
-    console.log(tbodyData)
     const navigate = useNavigate();
     const dispatch = useDispatch();
 

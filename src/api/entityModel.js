@@ -51,7 +51,7 @@ const transactions = {
       
         {
             fieldName: 'Transaction type',
-            type: 'number',
+            type: 'text',
             accessor: 'type',
             dependencyField: false
         },

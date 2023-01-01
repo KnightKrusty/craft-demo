@@ -30,7 +30,7 @@ const EditEntity = () => {
     dispatch(editFormData(type, id, formState, query));
   }
   return (
-    <div className='form'>
+    <div className='form container'>
       <h1>
         Edit Entity: {type}
       </h1>
@@ -46,7 +46,6 @@ const EditEntity = () => {
             saveFormAction={saveForm}
           />
       }
-
     </div>
   )
 }

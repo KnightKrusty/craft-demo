@@ -6,7 +6,6 @@ import Toast from './components/common/Toast';
 
 function Home() {
   const { isLoading, topo } = useSelector(state => state.dependency);
-
   return (
     <div className="Home">
       {isLoading && <Loader/>}

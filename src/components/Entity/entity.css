@@ -7,7 +7,8 @@ section {
 .container {
     width: 90%;
     margin: 2rem auto;
-
+    padding: 1rem;
+    max-width: 64rem;
 }
 
 .header {
@@ -24,4 +25,11 @@ section {
     text-align: center;
     font-weight: 600;
     font-size: 1.5rem;
+}
+select{
+    border-radius: 0.375rem;
+    display: block;
+    padding: 0.5rem;
+    padding-right: 1rem;
+    outline: none;
 }
