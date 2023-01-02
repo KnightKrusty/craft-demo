@@ -24,7 +24,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "client": "react-scripts start",
-    "server": "json-server --watch ./src/api/db.json -p 3030",
+    "server": "json-server --watch ./src/api/db.json -p 3030 --no-cors",
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
