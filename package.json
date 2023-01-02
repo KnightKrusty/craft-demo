@@ -23,7 +23,9 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
+    "client": "react-scripts start",
+    "server": "json-server --watch ./src/api/db.json -p 3030",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -48,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^7.6.0",
     "gh-pages": "^4.0.0",
     "json-loader": "^0.5.7",
     "json-server": "^0.17.1"

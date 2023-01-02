@@ -22,7 +22,7 @@ export const getTopoSortDFS = (data) => {
   let currentVis = {};
   let isCycle = {flag: false};
   for (let key of keys) {
-    if (visited[key] == undefined) {
+    if (visited[key] === undefined) {
       if (!isCycle.flag) findTopoSOrt(key, visited, currentVis, stack, adj, isCycle);
     }
   }
@@ -38,7 +38,7 @@ function findTopoSOrt(node, vis, currentVis, st, adj, isCycle) {
   vis[node] = 1;
   currentVis[node] = 1;
   for (let ele of adj[node] || []) {
-    if (vis[ele] == undefined) {
+    if (vis[ele] === undefined) {
       findTopoSOrt(ele, vis, currentVis, st, adj, isCycle);
     } else if (currentVis[ele]) {
       isCycle.flag = true;
