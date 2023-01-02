@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Dropdown from "../Dropdown";
 import Field from "./Field";
 import { useNavigate } from "react-router";
+import './form.css'
 
 const Create = ({ fields, defaultState, disableId, saveFormAction }) => {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ const Create = ({ fields, defaultState, disableId, saveFormAction }) => {
         if (!field.dependencyField) {
           return (
             <Field
+              key={field.accessor}
               field={field}
               onChangeInput={onChangeInput}
               value={formState[field.accessor] || ""}

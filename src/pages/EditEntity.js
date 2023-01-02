@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import entityModel from '../../../api/entityModel';
-import Create from './CreateEntity';
+import entityModel from '../api/entityModel';
+import Create from '../components/common/Form/CreateEntity';
 import { useParams } from 'react-router';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { editFormData } from '../../../redux/actions/actions';
-import './form.css';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { editFormData } from '../redux/actions/actions';
 
 const EditEntity = () => {
   const { type, id } = useParams();

@@ -1,12 +1,12 @@
 import React from 'react';
-import './App.css'
-import { BrowserRouter as Router, Route, Routes, Redirect } from 'react-router-dom';
-import Home from './Home';
-import AddEntity from './components/common/Form/AddEntity';
-import EditEntity from './components/common/Form/EditEntity';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import AddEntity from './pages/AddEntity';
+import EditEntity from './pages/EditEntity';
 import { useEffect } from 'react';
 import { getDependencies } from './redux/actions/actions';
 import { useDispatch } from 'react-redux';
+import './App.css';
 
 const App = () => {
     const dispatch = useDispatch();
@@ -20,7 +20,6 @@ const App = () => {
                 <Route exact path='/edit/:type/:id' element={< EditEntity />}></Route>
                 <Route exact path='/add/:type' element={< AddEntity />}></Route>
             </Routes>
-
         </Router>
     )
 }

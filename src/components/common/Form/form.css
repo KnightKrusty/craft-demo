@@ -15,11 +15,6 @@ label {
     margin-top: 2rem;
 }
 
-.form {
-    padding: 1rem;
-    max-width: 32rem;
-}
-
 input {
     padding: .5rem .75rem;
     border: 1px solid #beb6b6;

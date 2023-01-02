@@ -1,11 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
-import Create from "./CreateEntity";
-import entityModel from "../../../api/entityModel";
-import { addNewData } from "../../../redux/actions/actions";
+import Create from "../components/common/Form/CreateEntity";
+import entityModel from "../api/entityModel";
+import { addNewData } from "../redux/actions/actions";
 import { useDispatch } from "react-redux";
-import "./form.css";
 
 const AddEntity = () => {
   

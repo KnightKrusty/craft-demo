@@ -1,8 +1,8 @@
-import Entity from "./components/Entity";
+import Entity from "../components/Entity";
 import { useSelector } from "react-redux";
-import Loader from "./components/common/Loader";
+import Loader from "../components/common/Loader";
 import { useEffect } from "react";
-import Error from "./components/common/Error";
+import Error from "../components/common/Error";
 
 function Home() {
   const { isLoading, topo, error } = useSelector((state) => state.dependency);
